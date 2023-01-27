@@ -15,5 +15,8 @@
         public double Long { get; set; }
 
         public long population { get; set; }
+
+        //navigatio property
+        public IEnumerable<Walk> Walks { get; set; }
     }
 }
