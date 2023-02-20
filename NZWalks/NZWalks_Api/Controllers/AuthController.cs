@@ -7,6 +7,8 @@ namespace NZWalks_Api.Controllers
     [Route("[controller]")]
     public class AuthController : Controller
     {
+        //godhani jay pravinbhai
+        // patel alay tarunbhai
         private readonly IUserRepository userRepository;
         private readonly ITokenHandler tokenHandler;
 
