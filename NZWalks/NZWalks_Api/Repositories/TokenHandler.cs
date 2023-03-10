@@ -23,10 +23,11 @@ namespace NZWalks_Api.Repositories
             claims.Add(new Claim(ClaimTypes.Email, user.EmailAddress));
 
             // Loop into roles of users
-            user.Roles.ForEach((role) =>
+            Console.WriteLine(user);
+          /*  user.Roles.ForEach((role) =>
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
-            });
+            });*/
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -40,5 +41,7 @@ namespace NZWalks_Api.Repositories
 
             return Task.FromResult(new JwtSecurityTokenHandler().WriteToken(token));
         }
+
+        
     }
 }

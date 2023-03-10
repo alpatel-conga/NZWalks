@@ -24,7 +24,7 @@ namespace NZWalks_Api.Controllers
         }
 
         [HttpGet]
-        
+        [Authorize]
         public async Task<IActionResult> GetAllWalkDifficulties()
         {
             var walkDifficultiesDomain = await walkDifficultyRepository.GetAllAsync();
@@ -38,6 +38,7 @@ namespace NZWalks_Api.Controllers
         [HttpGet]
         [Route("{id:guid}")]
         [ActionName("GetWalkDifficultyById")]
+        [Authorize]
 
         public async Task<IActionResult> GetWalkDifficultyById(Guid id)
         {
@@ -54,7 +55,7 @@ namespace NZWalks_Api.Controllers
         }
 
         [HttpPost]
-       
+        [Authorize]
         public async Task<IActionResult> AddWalkDifficultyAsync(
             Models.DTO.AddWalkDifficultyRequest addWalkDifficultyRequest)
         {
@@ -83,7 +84,7 @@ namespace NZWalks_Api.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
-        
+        [Authorize]
         public async Task<IActionResult> UpdateWalkDifficultyAsync(Guid id,
             Models.DTO.UpdateWalkDifficultyRequest updateWalkDifficultyRequest)
         {
@@ -116,7 +117,7 @@ namespace NZWalks_Api.Controllers
 
         [HttpDelete]
         [Route("{id:guid}")]
-       
+        [Authorize]
         public async Task<IActionResult> DeleteWalkDifficulty(Guid id)
         {
             var walkDifficultyDomain = await walkDifficultyRepository.DeleteAsync(id);

@@ -74,7 +74,7 @@ namespace NZWalks_Api.Controllers
             return Ok(regionDTO);
         }
         [HttpPost]
-        
+        [Authorize]
         public async Task<IActionResult> AddRegionAsync(Models.DTO.AddRegionRequest addRegionRequest)
         {
             //validate request...
@@ -109,6 +109,7 @@ namespace NZWalks_Api.Controllers
         }
         [HttpDelete]
         [Route("{id:guid}")]
+        [Authorize]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
             var region= await regionRepository.DeleteRegionAsync(id);
@@ -136,6 +137,7 @@ namespace NZWalks_Api.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
+        [Authorize]
         public async Task<IActionResult> UpdateSync([FromRoute]Guid id,[FromBody]Models.DTO.UpdateRegionRequest updateRegionRequest)
         {
             // Validate the incoming request

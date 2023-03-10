@@ -25,7 +25,7 @@ namespace NZWalks_Api.Controllers
         }
 
         [HttpGet]
-        
+        [Authorize]
         public async Task<IActionResult> GetAllWalk()
         {
             // Fetch data from database - domain walks
@@ -40,6 +40,7 @@ namespace NZWalks_Api.Controllers
         [HttpGet]
         [Route("{id:guid}")]
         [ActionName("GetWalkAsync")]
+        [Authorize]
         public async Task<IActionResult> GetWalkAsync(Guid id)
         {
             // Get Walk Domain object from database
@@ -52,6 +53,7 @@ namespace NZWalks_Api.Controllers
             return Ok(walkDTO);
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddWalkAsync([FromBody] Models.DTO.AddWalkRequest addWalkRequest)
         {
             if (!(await ValidateAddWalkAsync(addWalkRequest)))
@@ -87,6 +89,7 @@ namespace NZWalks_Api.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
+        [Authorize]
       
         public async Task<IActionResult> UpdateWalkAsync([FromRoute] Guid id,
             [FromBody] Models.DTO.UpdateWalkRequest updateWalkRequest)
@@ -130,6 +133,7 @@ namespace NZWalks_Api.Controllers
 
         [HttpDelete]
         [Route("{id:guid}")]
+        [Authorize]
         
         public async Task<IActionResult> DeleteWalkAsync(Guid id)
         {

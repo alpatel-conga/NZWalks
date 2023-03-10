@@ -15,6 +15,8 @@ namespace NZWalks_Api.Data
         public DbSet<Walk> Walk { get; set; }
 
         public DbSet<WalkDifficulty> WalkDifficulty { get; set; }
+
+        public DbSet<User> Users { get; set; }
       
     }
 }

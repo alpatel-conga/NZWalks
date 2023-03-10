@@ -8,6 +8,7 @@ public class RegionProfile : Profile
 
         CreateMap<Models.Domain.Region, Models.DTO.Region>()
                .ReverseMap();
+        CreateMap<Models.Domain.User, Models.DTO.User>().ReverseMap();
 
     }
 

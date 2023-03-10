@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NZWalks_Api.Models.DTO;
 using NZWalks_Api.Repositories;
 
 namespace NZWalks_Api.Controllers
@@ -16,16 +17,19 @@ namespace NZWalks_Api.Controllers
             this.tokenHandler = tokenHandler;
         }
 
+
+
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> LoginAsync(Models.DTO.LoginRequest loginRequest)
+        public async Task<IActionResult> LoginAsync(LoginRequest loginRequest)
         {
             // Check if user is authenticated
             // Check username and password
             var user = await userRepository.AuthenticateAsync(
                 loginRequest.Username, loginRequest.Password);
+          
 
-            if (user != null)
+            if (user!= null)
             {
                 // Generate a JWT Token
                 var token = await tokenHandler.CreateTokenAsync(user);
